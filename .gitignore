@@ -1,0 +1,17 @@
+# pycache
+__pycache__/
+
+# virtual envirements files
+venv/
+env/
+
+# input archives file
+*/*.zip
+*/*.rar
+
+# ignore output files (exept .gitkeep file)
+output/*
+!.gitkeep
+
+# PyCharm
+.idea/
