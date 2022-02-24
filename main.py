@@ -166,9 +166,44 @@ def solution1(projects, collaborateurs):
 
 
 def solution2():
-    """Solution for the input 1."""
-    pass
+    """autre solution."""
+    def project_fulfillable(project_candidats):
+        """
+        project_candidats : dic 
+            {role: [list,candidat], role: [list, candidats] }
+        """
+        for role in project_candidats:
+            if len(role)==0:
+                return False
 
+        return True
+    
+    # list candidats  pour chaque projet
+    # PS: plusieurs candidat pour le meme role, osef on met tout!
+    # {project_name : {role: [list,candidat], role: [list, candidats] },
+    #  project_name2: {role: [list,candidat], role: [list, candidats] } 
+    # }
+    projet_candidats = {}
+
+
+    # NO NEED to_do_projects = []
+    for project in projects:
+        projet_candidats[project.name] = {}
+
+        for role in project.roles:
+            projet_candidats[project.name][role] = []
+
+            for collaborateur in collaborateurs:
+                if role in collaborateur.skills:
+                    # on prend pas en compte le mentorship
+                    if collaborateur.skills[role] >= project.level_roles[role]:
+                        # ajouter a la liste des collabo
+                        projet_candidats[project.name][role].append(collaborateur)
+
+            # TODO: ajouter une fonction pour check si le projet peut etre fulfill 
+
+
+    
 
 
 if __name__ == '__main__':
