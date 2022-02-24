@@ -62,7 +62,7 @@ def main():
     # rest of the code
 
     # read file
-    content = input.read_file(args.file)
+    content = input.read_file(input.path_files[args.file])
 
     # separate the first line
     first_line, content = input.separate_first_line(content)
@@ -81,19 +81,33 @@ def main():
         nb_skils = int(nb_skils)
         i+=1
         skills = {}
-        for _ in nb_skils:
+        for _ in range(nb_skils):
             skill, level = lines[i].split(' ')
             i+=1
             skills[skill] = int(level)
         contributors.append(Colaborateur(name, skills))
 
-    import pdb; pdb.set_trace()
-
     projects = []
     # get projects
-    for i in range(P):
-        pass
+    for _ in range(P):
+        name, D, S, B, R = lines[i].split(' ')
+        # R,D,S,B = map(lambda x:int(x),[R,D,S,B])
+        R = int(R)
+        D = int(D)
+        S = int(S)
+        B = int(B)
+        i+=1
+        roles = []
+        roles_level = {}
+        for _ in range(R):
+            role, level = lines[i].split(' ')
+            i+=1
+            roles.append(role)
+            roles_level[role] = int(level)
+        projects.append(Projet(name, D, S, B, roles, roles_level ))
 
+
+    import pdb; pdb.set_trace()
     # represent data
 
     # solution
