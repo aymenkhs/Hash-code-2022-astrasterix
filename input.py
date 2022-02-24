@@ -2,10 +2,11 @@ import os
 
 path_files = {
     "a": os.path.join("inputs", "a_an_example.in.txt"),
-    "b": os.path.join("inputs", "b_basic.in.txt"),
-    "c": os.path.join("inputs", "c_coarse.in.txt"),
-    "d": os.path.join("inputs", "d_difficult.in.txt"),
-    "e": os.path.join("inputs", "e_elaborate.in.txt"),
+    "b": os.path.join("inputs", "b_better_start_small.in.txt"),
+    "c": os.path.join("inputs", "c_collaboration.in.txt"),
+    "d": os.path.join("inputs", "d_dense_schedule.in.txt"),
+    "e": os.path.join("inputs", "e_exceptional_skills.in.txt"),
+    "f": os.path.join("inputs", "f_find_great_mentors.in.txt"),
 }
 
 def read_file(file_path):

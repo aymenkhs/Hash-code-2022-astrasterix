@@ -1,3 +1,6 @@
+
+
+
 import argparse
 import pdb
 
@@ -83,8 +86,8 @@ def main():
         skills = {}
         for _ in range(nb_skils):
             skill, level = lines[i].split(' ')
-            i+=1
             skills[skill] = int(level)
+            i+=1
         contributors.append(Colaborateur(name, skills))
 
     projects = []
@@ -107,12 +110,11 @@ def main():
         projects.append(Projet(name, D, S, B, roles, roles_level ))
 
 
-    import pdb; pdb.set_trace()
+    
     # represent data
 
     # solution
-    to_do_projects = solution1()
-
+    to_do_projects = solution1(projects, contributors)
     # output
     output.write_file(args.file, to_do_projects)
 
@@ -137,10 +139,10 @@ def solution1(projects, collaborateurs):
 
             for collaborateur in collaborateurs:
                 # collaborateur can't work on more then 1 (role)tech on a project
-                if not collaborateur.assign and role in collaborateur.skills:
+                if not collaborateur.assigned and role in collaborateur.skills:
                     if collaborateur.skills[role] >= project.level_roles[role]:
                         found = True
-                        collaborateur.assign = True
+                        collaborateur.assigned = True
                         break
 
             if found:
@@ -149,22 +151,18 @@ def solution1(projects, collaborateurs):
                 
                 # this means that the project can't be asigned
                 project_doable = False
-                break
+                
                 # ignore project
                 for asigned_role in project_roles:
-                    project_roles[asigned_role].assign = False
-                    
+                    project_roles[asigned_role].assigned = False
+                break    
 
         if project_doable:
             #ajouterasigned_toe des doua
-            project.asignde_to = project_roles
+            project.asigned_to = project_roles
             to_do_projects.append(project)
     
-    return to_do_projects
-        
-
-
-                
+    return to_do_projects            
 
 
 def solution2():
